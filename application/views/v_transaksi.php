@@ -160,6 +160,7 @@
                                         <th>Angsuran 1</th>
                                         <th>Angsuran 2</th>
                                         <th>Angsuran 3</th>
+                                        <th>Kurang Bayar</th>
                                         <th>Kode Referal</th>
                                         <th>Tgl Transaksi</th>
                                         <th>Status</th>
@@ -173,13 +174,14 @@
                                         $no = 1;
                                         foreach($data_transaksi as $s){ 
                                             $ed = base64_encode($s['id_transaksi']);
+                                            $total_harga = $s['jumlah']*$s['total_harga'];
                                     ?>
                                         <tr id="<?= $ed; ?>">
                                         <td><?= $no++ ?></td>
                                         <td><?=$s['nama_pemesan']?></td>
                                         <td><?= $s['nama_paket'] ?></td>
                                         <td><?= $s['jumlah'] ?></td>
-                                        <td><?= $s['jumlah']*$s['total_harga']?></td>
+                                        <td><?= $total_harga?></td>
                                         <td>
                                             <?php
                                             $dp = $s['dp'];
@@ -227,6 +229,15 @@
                                             <?php }else{?>
                                             <a href="#" class="btn btn-secondary btnBayar3 btn-sm"> Bayar &nbsp;<i
                                                     class="icon-note"></i></a>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $total_harga_all = $total_harga-$s['dp']-$s['angsuran_1']-$s['angsuran_2']-$s['angsuran_3'];
+                                            if($total_harga_all == 0){ ?>
+                                                <span class="badge badge-md badge-secondary">Lengkap</span>
+                                            <?php } else {?>
+                                                <span class="badge badge-md badge-warning"><?= $total_harga-$s['dp']-$s['angsuran_1']-$s['angsuran_2']-$s['angsuran_3']?></span>
                                             <?php } ?>
                                         </td>
                                         <td><span class="badge badge-md badge-dark"><?= $s['kode_ref'] ?></span></td>

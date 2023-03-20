@@ -58,7 +58,7 @@
                 visibility: visible;
             }
             #print-card {
-                position: absolute;
+                position: 100%;
                 left: 0;
                 top: 0;
             }

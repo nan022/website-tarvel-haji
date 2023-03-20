@@ -349,8 +349,21 @@
 	$('#nama').keyup(function (e) {
 		var nameField = $('#nama').val();
 		var tglField = $('#tgl_lahir').val();
-		
-		codeRefgenerate = nameField + '-' + tglField;
+		tes = tglField.split('-');
+		split1 = tes[2];
+		split2 = tes[1];
+		codeRefgenerate = nameField + '-' + split1 + split2;
+		result = codeRefgenerate.toUpperCase()
+		$('#code_ref').val(result);
+	});
+
+	$('#tgl_lahir').on("keyup change", function (e) {
+		var nameField = $('#nama').val();
+		var tglField = $('#tgl_lahir').val();
+		tes = tglField.split('-');
+		split1 = tes[2];
+		split2 = tes[1];
+		codeRefgenerate = nameField + '-' + split1 + split2;
 		result = codeRefgenerate.toUpperCase()
 		$('#code_ref').val(result);
 	});
@@ -487,7 +500,7 @@
 				// $("#password_edit").val(data[0].password);
 				$("#tgl_lahir_edit").val(data[0].tgl_lahir);
 				$("#nm_wa_edit").val(data[0].nm_wa);
-				$("#code_ref_edit").val(data[0].code_ref);
+				$("#code_ref_edit").val(data[0].kode_ref);
 				$('#editDataRepresentatif').modal('show');
 			}
 		});

@@ -188,7 +188,7 @@
                                         <b><?= "Rp " . number_format($s['total']*$s['total_harga'],0,',','.');?></b>
                                         <?php } ?>
                                     </h3>
-                                    <h3 class="text-light">Total Pendapatan Saat Ini :
+                                    <!-- <h3 class="text-light">Total Pendapatan Saat Ini :
                                         <?php 
                                             $no = 1;
                                             foreach($data_total_now as $s){ 
@@ -196,7 +196,7 @@
                                                 ?>
                                         <b><?= "Rp " . number_format($s['total_dp']+$s['total_angsuran_1']+$s['total_angsuran_2']+$s['total_angsuran_3'],0,',','.');?></b>
                                         <?php } ?>
-                                    </h3>
+                                    </h3> -->
                                     <label class="text-light">*Pendapatan dari <?= $start_date ?> hingga
                                         <?= $end_date ?></label>
                                 </div>
