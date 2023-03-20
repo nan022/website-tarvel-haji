@@ -82,6 +82,7 @@
                                         <th>Angsuran 1</th>
                                         <th>Angsuran 2</th>
                                         <th>Angsuran 3</th>
+                                        <th>Kurang Bayar</th>
                                         <th>Kode Referal</th>
                                         <th>Tanggal Transaksi</th>
                                         <th>Status</th>
@@ -93,6 +94,7 @@
                                         $no = 1;
                                         foreach($data as $s){ 
                                             $ed = base64_encode($s['id_user']);
+                                            $total_harga = $s['jumlah']*$s['total_harga'];
                                     ?>
                                     <tr id="<?= $ed; ?>">
                                         <td><?= $no++ ?></td>
@@ -144,6 +146,15 @@
                                             <span class="badge badge-md badge-info">Rp. <?= $s['angsuran_3'] ?></span>
                                             <?php }else{?>
                                                 <a href="#" class="badge badge-md badge-secondary"> Belum Membayar</a>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $total_harga_all = $total_harga-$s['dp']-$s['angsuran_1']-$s['angsuran_2']-$s['angsuran_3'];
+                                            if($total_harga_all == 0){ ?>
+                                                <span class="badge badge-md badge-secondary">Lengkap</span>
+                                            <?php } else {?>
+                                                <span class="badge badge-md badge-warning"><?= $total_harga-$s['dp']-$s['angsuran_1']-$s['angsuran_2']-$s['angsuran_3']?></span>
                                             <?php } ?>
                                         </td>
                                         <td><span class="badge badge-md badge-dark"><?= $s['kode_ref'] ?></span></td>
